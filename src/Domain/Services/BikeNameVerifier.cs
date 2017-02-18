@@ -4,13 +4,12 @@
     using Entities;
     using Repositories;
 
-    public class BikeNameVerifier : IBikeNameVerifier
+    public class NameVerifier<T> : INameVerifier<T> where T : IUniqueNameEntity, IEntity
     {
-        private readonly IRepository<Bike> _repository;
+        private readonly IRepository<T> _repository;
 
 
-
-        public BikeNameVerifier(IRepository<Bike> repository)
+        public NameVerifier(IRepository<T> repository)
         {
             _repository = repository;
         }
@@ -19,7 +18,7 @@
 
         public bool IsFree(string name)
         {
-            return _repository.All().All(x => x.Name != name);
+            return _repository.All().All(x => x.GetUniqueName() != name);
         }
     }
 }

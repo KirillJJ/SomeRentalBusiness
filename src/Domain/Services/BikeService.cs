@@ -7,11 +7,11 @@
     public class BikeService : IBikeService
     {
         private readonly IRepository<Bike> _repository;
-        private readonly IBikeNameVerifier _bikeNameVerifier;
+        private readonly INameVerifier<Bike> _bikeNameVerifier;
 
 
         
-        public BikeService(IRepository<Bike> repository, IBikeNameVerifier bikeNameVerifier)
+        public BikeService(IRepository<Bike> repository, INameVerifier<Bike> bikeNameVerifier)
         {
             if (repository == null)
                 throw new ArgumentNullException(nameof(repository));

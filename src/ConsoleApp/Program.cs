@@ -17,8 +17,8 @@
                 .SingleInstance();
 
             containerBuilder
-                .RegisterType<BikeNameVerifier>()
-                .As<IBikeNameVerifier>();
+                .RegisterType<NameVerifier>()
+                .As<INameVerifier>();
 
             containerBuilder
                 .RegisterType<BikeService>()

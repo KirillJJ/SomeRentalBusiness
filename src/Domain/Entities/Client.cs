@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Client : IEntity
+    public class Client : IEntity, IUniqueNameEntity
     {
         public Client(string surname, string firstname, string patronymic)
         {
@@ -29,5 +29,10 @@
         public readonly string Patronymic;
 
         public string FullName => $"{Surname} {FirstName} {Patronymic}";
+
+        public string GetUniqueName()
+        {
+            return FullName;
+        }
     }
 }

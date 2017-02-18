@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Bike : IEntity
+    public class Bike : IEntity, IUniqueNameEntity
     {
         protected internal Bike(string name, decimal hourCost)
         {
@@ -73,6 +73,11 @@
                 throw new InvalidOperationException("Bike is free");
 
             IsFree = true;
+        }
+
+        public string GetUniqueName()
+        {
+            return Name;
         }
     }
 }

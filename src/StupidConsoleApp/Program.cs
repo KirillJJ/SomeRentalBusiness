@@ -12,7 +12,7 @@
             IRepository<Client> clientRepository = new Repository<Client>();
             IRepository<Employee> employeeRepository = new Repository<Employee>();
             IRepository<Bike> bikeRepository = new Repository<Bike>();
-            IBikeNameVerifier bikeNameVerifier = new BikeNameVerifier(bikeRepository);
+            INameVerifier bikeNameVerifier = new NameVerifier(bikeRepository);
             IBikeService bikeService = new BikeService(bikeRepository, bikeNameVerifier);
 
             App app = new App(clientRepository, employeeRepository, bikeRepository, bikeService);

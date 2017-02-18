@@ -56,6 +56,8 @@
             }
 
             bike.RentPoint.PutDeposit(deposit);
+
+            bike.Take();
             
             Rent rent = new Rent(client, bike, deposit);
 
@@ -77,6 +79,8 @@
 
             if (rent == null)
                 throw new InvalidOperationException("Rent not found");
+
+            bike.Return();
 
             rent.End(rentPoint);
         }

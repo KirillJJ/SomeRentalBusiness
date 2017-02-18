@@ -6,7 +6,7 @@
     using System.Linq;
     using Deposits;
 
-    public class RentPoint : IEntity
+    public class RentPoint : IEntity, IUniqueNameEntity
     {
         protected readonly IList<Bike> _bikes = new List<Bike>();
         protected readonly IList<PassportDeposit> _passportDeposits = new List<PassportDeposit>();
@@ -14,7 +14,8 @@
 
         public RentPoint(
             Employee employee,
-            decimal money)
+            decimal money,
+            string name)
         {
             if (employee == null)
                 throw new ArgumentNullException(nameof(employee));
@@ -22,9 +23,11 @@
                 throw new ArgumentOutOfRangeException(nameof(money));
 
             Employee = employee;
-            Money = money;
+            Name = name;
+            Money = money;//TODO money заменить на кассу
         }
 
+        public string Name { get; protected set; }
 
         public decimal Money { get; protected set; }
 
@@ -111,6 +114,11 @@
                 throw new ArgumentNullException(nameof(bike));
 
             _bikes.Remove(bike);
+        }
+
+        public string GetUniqueName()
+        {
+            return Name;
         }
     }
 }
